@@ -1,0 +1,16 @@
+PODS:
+  - IanKit (0.1.0)
+
+DEPENDENCIES:
+  - IanKit (from `../`)
+
+EXTERNAL SOURCES:
+  IanKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IanKit: b538b1d109df4a92abe578628a0e515f24fcb537
+
+PODFILE CHECKSUM: d949c6b3698f55e24f6fd9513dcfee0ad7ecbd9b
+
+COCOAPODS: 1.6.0.beta.1

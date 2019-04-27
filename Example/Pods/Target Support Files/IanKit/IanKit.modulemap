@@ -1,0 +1,6 @@
+framework module IanKit {
+  umbrella header "IanKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
