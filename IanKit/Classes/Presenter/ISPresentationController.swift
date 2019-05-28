@@ -12,8 +12,8 @@ import UIKit
 
 public class ISPresentationController: UIPresentationController {
 
-    var showDirection:ShowDirection = .fromLeft
-    var config:ISPresentConfiguration = ISPresentConfiguration()
+    public var showDirection:ShowDirection = .fromLeft
+    public var config:ISPresentConfiguration = ISPresentConfiguration()
     lazy var dimmingView:UIView = {
         let v = UIView()
         v.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapDimingView)))

@@ -45,7 +45,7 @@ public enum TextPatternType{
 
 public extension String{
     //Match is the text illegal
-    public func match(_ type:TextPatternType)->Bool{
+     func match(_ type:TextPatternType)->Bool{
         let predicate = NSPredicate.init(format: "SELF MATCHES %@", type.pattern)
         return predicate.evaluate(with: self)
     }
@@ -53,7 +53,7 @@ public extension String{
     
     //get substrings whitch match pattern
     
-    public func getSubstring( _ type:TextPatternType)->[String]{
+     func getSubstring( _ type:TextPatternType)->[String]{
         let pattern = type.pattern
         var res:[String] = []
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
@@ -71,7 +71,7 @@ public extension String{
     }
     
     
-    public func getRanges(_ type:TextPatternType)->[NSRange]{
+     func getRanges(_ type:TextPatternType)->[NSRange]{
         let pattern = type.pattern
         var res:[NSRange] = []
         guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {

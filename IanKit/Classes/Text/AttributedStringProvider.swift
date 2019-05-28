@@ -22,10 +22,10 @@ public enum AttributedRangType{
 
 public struct AttributedStringProvider {
     private var string:String = ""
-    var mutableAttributed:NSMutableAttributedString!
+    public var mutableAttributed:NSMutableAttributedString!
 
     //init
-    func attributedString(_ attributedTypes:[AttributedType])->NSAttributedString{
+    public func attributedString(_ attributedTypes:[AttributedType])->NSAttributedString{
         let values = attributedTypes.flatMap({$0.attributes})
         var dics:[NSAttributedString.Key:Any] = [:]
         values.forEach { (dic) in
@@ -36,7 +36,7 @@ public struct AttributedStringProvider {
     
 
     
-    func appendAttributes(_ attributs:[AttributedType],rangeType:AttributedRangType = .all)->AttributedStringProvider{
+    public func appendAttributes(_ attributs:[AttributedType],rangeType:AttributedRangType = .all)->AttributedStringProvider{
         
         let ranges = self.getRange(rangType: rangeType)
         ranges.forEach { (r) in
@@ -47,7 +47,7 @@ public struct AttributedStringProvider {
         return self
     }
     
-    func appendAtrribute(_ attribute:AttributedType,rangeType:AttributedRangType = .all)->AttributedStringProvider{
+    public func appendAtrribute(_ attribute:AttributedType,rangeType:AttributedRangType = .all)->AttributedStringProvider{
         let rangeType = getRange(rangType: rangeType)
         rangeType.forEach { (r) in
             self.mutableAttributed.appendAttribute(attribute: attribute, in: r)

@@ -19,7 +19,6 @@
 		9A3654B7B33C23F7B54639A0E57AF5E2 /* TextMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F4DA75B70A17BAC1D21833538812A4 /* TextMatcher.swift */; };
 		9CFC303AB8C57AE457E7A3BFDD54E21B /* ISConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534CF3BC7E7FF11341A6E6AB29DA4DA /* ISConfiguration.swift */; };
 		A8C6B34AEA189DA91821F162305E9713 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B07AAFB8EB2202C5E11753235D617 /* Animator.swift */; };
-		ACA8B7EFDD55589040BB87FF1E447E30 /* URL+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D08450770C944285A678FBDC71F7E5 /* URL+extension.swift */; };
 		C09EE77122B4751C0FB74CC7B18AEF7A /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B309BFB58029DC67D18DB4589CB62 /* Number.swift */; };
 		CC8C688A83DC9758C4593A056EDADF74 /* ISPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9A5345BED334B49573FA06C731C95 /* ISPresentationController.swift */; };
 		CDE020F4EE799AA014C863DBE6459E3D /* IanKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 307002BB41E7CDC7D039C83D8E37AF62 /* IanKit-dummy.m */; };
@@ -40,19 +39,18 @@
 		093A95F7CF88A1BF9F7D118DABB6968F /* Pods-IanKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IanKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		0F6F476B5B0FA184331A65EE4A3EC970 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17941553A1D607B036A5715BC01D985B /* Pods-IanKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IanKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		18D08450770C944285A678FBDC71F7E5 /* URL+extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "URL+extension.swift"; sourceTree = "<group>"; };
-		1F47B97D269544C2E9DDC513068464C4 /* IanKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IanKit.framework; path = IanKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F47B97D269544C2E9DDC513068464C4 /* IanKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IanKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FE3AB4E55737D97E7C5D08283F3970 /* Pods-IanKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IanKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		24390EFD555DD124430DFF9724065945 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		28B5A5EBD5A12C8DA325257CFE573924 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		24390EFD555DD124430DFF9724065945 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		28B5A5EBD5A12C8DA325257CFE573924 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2970D421353BE7444D607773A82B5CCB /* Pods-IanKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IanKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		307002BB41E7CDC7D039C83D8E37AF62 /* IanKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IanKit-dummy.m"; sourceTree = "<group>"; };
 		31FE87F6F8BCAE311EFBDDAC7727A430 /* IanKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IanKit-prefix.pch"; sourceTree = "<group>"; };
 		3690B6559F93106E17D59B39445CB336 /* IanKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IanKit.modulemap; sourceTree = "<group>"; };
 		40D9A5345BED334B49573FA06C731C95 /* ISPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ISPresentationController.swift; sourceTree = "<group>"; };
-		57D46978D73784DF067F080B4B5ACBDF /* IanKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = IanKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		57D46978D73784DF067F080B4B5ACBDF /* IanKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = IanKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		580285894FB88D0772ADE51D360A4379 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A6443701DC904B2A82981C88A6F2647 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		5A6443701DC904B2A82981C88A6F2647 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		62CF70859B7E6C2C4D6C0BF9D14347A7 /* IanKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IanKit.xcconfig; sourceTree = "<group>"; };
 		72F4DA75B70A17BAC1D21833538812A4 /* TextMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextMatcher.swift; sourceTree = "<group>"; };
 		846072D93BAA5946609D7EB0DEAA8AD2 /* Pods-IanKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IanKit_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -69,7 +67,7 @@
 		C90B07AAFB8EB2202C5E11753235D617 /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EF24CDA293EC4D39D9A97B909BB8855B /* Pods-IanKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IanKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F32184011EA4089EB3067F494B7AF512 /* Pods_IanKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_IanKit_Tests.framework; path = "Pods-IanKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32184011EA4089EB3067F494B7AF512 /* Pods_IanKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IanKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BAB61A047F003E23ECDA3B0AC17933 /* Pods-IanKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IanKit_Tests-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,7 +137,6 @@
 				9D3B309BFB58029DC67D18DB4589CB62 /* Number.swift */,
 				A0F4F5031214B005EAF1400834F517D0 /* String+extension.swift */,
 				72F4DA75B70A17BAC1D21833538812A4 /* TextMatcher.swift */,
-				18D08450770C944285A678FBDC71F7E5 /* URL+extension.swift */,
 			);
 			name = Text;
 			path = IanKit/Classes/Text;
@@ -299,6 +296,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -353,7 +351,6 @@
 				808F4DBBFAD16F91875BDC66E551F416 /* Presenter.swift in Sources */,
 				2D78EE9EDC665641EA93056EAC811F9D /* String+extension.swift in Sources */,
 				9A3654B7B33C23F7B54639A0E57AF5E2 /* TextMatcher.swift in Sources */,
-				ACA8B7EFDD55589040BB87FF1E447E30 /* URL+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +584,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

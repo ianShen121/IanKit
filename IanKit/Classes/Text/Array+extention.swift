@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Array where Element:Hashable {
-    public var noRepeat:[Element]{
+    var noRepeat:[Element]{
         var set = Set<Element>(self)
         var resultArray = [Element]()
         
