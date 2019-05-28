@@ -56,6 +56,8 @@ public extension String{
 //MARK:-SubString
 public extension String {
     
+    
+    
      var trim:String{
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
@@ -69,6 +71,15 @@ public extension String {
             return String(self[startIndex..<endIndex])
         }
     }
+    
+    func addPrefix(_ obj:Any)->String{
+        return "\(obj)" + self
+    }
+    
+    func addSuffix(_ obj:Any)->String{
+        return self + "\(obj)"
+    }
+    
 
     func sub(to end: Int) ->String{
         
