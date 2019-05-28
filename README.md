@@ -13,6 +13,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+我想做一个比较全面的，基础常用FrameWork
+Just it
+
 IanKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
