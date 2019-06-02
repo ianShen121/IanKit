@@ -16,16 +16,7 @@ fileprivate var CBTabbarKey = "CBTABBARKEY"
 
 class CBTabbarController: UIViewController,UIScrollViewDelegate {
 
-    lazy var tabbar:CBTabbar = {
-       let t = CBTabbar.init()
-        t.selectedItemHanddler = { [weak self] (idx) in
-            self?.setViewHiddel(current: self!.selectedViewController, next: idx)
-            self?.selectedViewController = idx
-            self?.setShowingVC()
-            self?.setContentOffset(animated: true)
-        }
-        return t
-    }()
+    var tabbar:CBTabbar!
     
    
     
@@ -33,6 +24,19 @@ class CBTabbarController: UIViewController,UIScrollViewDelegate {
         super.init(nibName: nil, bundle: nil)
         self.viewcontrollers = vcs
         self.selectedViewController = selectedViewController
+        
+        setTabbar()
+    }
+    
+    private func setTabbar(){
+        tabbar = CBTabbar.init()
+        tabbar.items = viewcontrollers.map({$0.cbTabType})
+        tabbar.selectedItemHanddler = { [weak self] (idx) in
+            self?.setViewHiddel(current: self!.selectedViewController, next: idx)
+            self?.selectedViewController = idx
+            self?.setShowingVC()
+            self?.setContentOffset(animated: true)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +73,7 @@ class CBTabbarController: UIViewController,UIScrollViewDelegate {
     func setShowingVC(){
         let matches = matchViewController[selectedViewController]
         for (k,v) in matches{
+            
             if k == selectedViewController{
                 if !self.children.contains(v){
                   
@@ -121,7 +126,6 @@ class CBTabbarController: UIViewController,UIScrollViewDelegate {
         scrollView.frame = CGRect.init(x: 0, y: 90, width: self.view.bounds.width, height:self.view.bounds.height-90)
         self.view.addSubview(tabbar)
         self.view.addSubview(scrollView)
-        tabbar.items = viewcontrollers.map({$0.cbTabType})
         
         self.scrollView.contentSize = CGSize.init(width: CGFloat(viewcontrollers.count)*self.view.bounds.width, height: 0)
         for (idx,vc) in viewcontrollers.enumerated(){

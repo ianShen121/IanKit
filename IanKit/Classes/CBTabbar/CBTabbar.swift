@@ -34,7 +34,8 @@ public struct CBTabbarConfiguration {
     var lineType:CBTabbarLineType = .nomal
     var lineColor:UIColor = UIColor.red
     var font:UIFont = UIFont.systemFont(ofSize: 14)
-    
+    var badgeColor:UIColor = UIColor.red
+    var badgeFont:UIFont = UIFont.boldSystemFont(ofSize: 14)
 }
 
 public enum CBTabbarStatus{
@@ -42,9 +43,13 @@ public enum CBTabbarStatus{
     case normal
 }
 
-fileprivate let textId = "text"
-fileprivate let imgeId = "image"
-fileprivate let fix = "fix"
+
+public class BadgeValueItem {
+    var value = 0
+    var index = 0
+}
+
+
 
 public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
@@ -60,12 +65,14 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     public var items:[CBTabItmType] = []{
         didSet{
-            menu.reloadData()
-            if let cell = menu.cellForItem(at: IndexPath.init(item: selectedItem, section: 0)) {
-                cell.isSelected = true
+
+            for i in 0..<items.count{
+                let it = BadgeValueItem()
+                it.index = i
+                badgeValues.append(it)
             }
-//            menu.selectItem(at: IndexPath.init(item: selectedItem, section: 0), animated: false, scrollPosition: .centeredVertically)
             
+            menu.reloadData()
         }
     }
     
@@ -88,6 +95,9 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     private(set) var selectedItem:Int = 0{
         didSet{
+            
+       
+            
           menu.reloadData()
         }
     }
@@ -95,10 +105,10 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     public func setSelectedItem(idx:Int,animated:Bool){
         self.isLineAnimated = animated
         selectedItem = idx
-        self.isLineAnimated = true
+        
     }
     
-    
+    var badgeValues:[BadgeValueItem] = []
     
     public var itemSizeType:ItemSizeType = .auto
     
@@ -137,6 +147,30 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
         
     }
     
+    
+    
+    //MARK:-- setBadge
+    public func setBadge(value:Int,ad idx:Int){
+        
+        for bgitem in badgeValues{
+            if bgitem.index == idx {
+                bgitem.value = value
+                break
+            }
+        }
+        
+//        let set = NSMutableSet()
+//        let idx = NSIndexPath.init(row: idx, section: 0)
+//        set.add(idx)
+//        let idxn = set as IndexSet
+        menu.reloadData()
+        
+        
+        
+       
+    }
+    
+    
     override public func layoutSubviews() {
         super.layoutSubviews()
         menu.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
@@ -152,55 +186,24 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = self.items[indexPath.row]
-        switch item {
-        case .image(let imges):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imgeId, for: indexPath) as! CBTabBarImageItem
-            cell.textColors = textColors
-            
-            cell.backGroundColors = backGroundColors
-            cell.isItemSelected = indexPath.row == selectedItem
-            cell.selectdHandder = { [weak self] (rect) in
-                self?.layoutLine(rect)
-            }
-            cell.icon.image = imges
-            return cell
-        case .text(let texts):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: textId, for: indexPath) as! CBTabbarTextItem
-            cell.textColors = textColors
-            cell.labText.font = self.configuration.font
-            cell.backGroundColors = backGroundColors
-            cell.selectdHandder = { [weak self] (rect) in
-                self?.layoutLine(rect)
-            }
-            cell.isItemSelected = indexPath.row == selectedItem
-            cell.labText.text = texts
-            return cell
-        case .textAndImage(let obj):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fix, for: indexPath) as! CBTabbarImageAndTextItem
-            cell.textColors = textColors
-            cell.backGroundColors = backGroundColors
-            cell.selectdHandder = { [weak self] (rect) in
-                self?.layoutLine(rect)
-            }
-            cell.labText.font = self.configuration.font
-            cell.isItemSelected = indexPath.row == selectedItem
-            cell.labText.text = obj.text
-            cell.icon.image = obj.image
-            return cell
-        case .textAndUrlImage(let obj):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fix, for: indexPath) as! CBTabbarImageAndTextItem
-            cell.textColors = textColors
-            cell.labText.font = self.configuration.font
-            cell.backGroundColors = backGroundColors
-            cell.selectdHandder = { [weak self] (rect) in
-                self?.layoutLine(rect)
-            }
-            
-            cell.isItemSelected = indexPath.row == selectedItem
-            cell.labText.text = obj.0
-            obj.imgeView?(cell.icon)
-            return cell
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CBTabbarItem
+        cell.selectdHandder = { [weak self] (rect) in
+            self?.layoutLine(rect)
         }
+        
+        
+        cell.badgeItem = badgeValues[indexPath.row]
+        cell.item = item
+        cell.textColors = textColors
+        cell.badgeColor = configuration.badgeColor
+        cell.backGroundColors = backGroundColors
+        cell.isItemSelected = indexPath.row == selectedItem
+        
+        
+        return cell
+        
+      
     }
     
     func layoutLine(_ rect:CGRect){
@@ -219,8 +222,10 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
         }
         guard isLineAnimated else {
              self.line.frame = CGRect.init(x:rect.minX + (rect.width-lineWidth)/2, y: self.menu.bounds.height-self.lineHeight, width: lineWidth, height: self.lineHeight)
+            self.isLineAnimated = true
             return
         }
+        self.isLineAnimated = true
         UIView.animate(withDuration: 0.2) {
               self.line.frame = CGRect.init(x:rect.minX + (rect.width-lineWidth)/2, y: self.menu.bounds.height-self.lineHeight, width: lineWidth, height: self.lineHeight)
         }
@@ -265,9 +270,8 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
    
        
         v.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom:self.lineHeight, right: 0)
-        v.register(CBTabbarTextItem.self, forCellWithReuseIdentifier: textId)
-        v.register(CBTabBarImageItem.self, forCellWithReuseIdentifier: imgeId)
-        v.register(CBTabbarImageAndTextItem.self, forCellWithReuseIdentifier: fix)
+        v.register(CBTabbarItem.self, forCellWithReuseIdentifier: "cell")
+    
         return v
     }()
     
