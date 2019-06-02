@@ -83,7 +83,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
                 if !self.children.contains(v){
                   
                     self.addChild(v)
-                    v.view.frame = CGRect.init(x: CGFloat(k)*self.view.frame.width, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - 90)
+                    v.view.frame = CGRect.init(x: CGFloat(k)*self.view.frame.width, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - tabbarHeight)
                     self.scrollView.addSubview(v.view)
                 }
                 
