@@ -20,7 +20,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
    
     
-    public init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
+    public  init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
         super.init(nibName: nil, bundle: nil)
         self.tabbarHeight = barHeight
         self.viewcontrollers = vcs
@@ -52,7 +52,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     fileprivate(set) var matchViewController:[[Int:UIViewController]] = []
     
-    lazy var scrollView:UIScrollView = {
+    lazy public var scrollView:UIScrollView = {
        let v = UIScrollView()
         v.delegate = self
         v.isPagingEnabled = true
@@ -110,7 +110,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
 
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let page = Int(targetContentOffset.move().x/self.view.bounds.width)
         setViewHiddel(current: selectedViewController, next: page)
@@ -120,7 +120,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     }
     
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         
