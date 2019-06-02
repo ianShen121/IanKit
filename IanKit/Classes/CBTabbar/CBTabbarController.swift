@@ -128,7 +128,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     func setUI(){
         tabbar.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width, height: tabbarHeight)
-        scrollView.frame = CGRect.init(x: 0, y: 90, width: self.view.bounds.width, height:self.view.bounds.height-tabbarHeight)
+        scrollView.frame = CGRect.init(x: 0, y: tabbarHeight, width: self.view.bounds.width, height:self.view.bounds.height-tabbarHeight)
         self.view.addSubview(tabbar)
         self.view.addSubview(scrollView)
         
