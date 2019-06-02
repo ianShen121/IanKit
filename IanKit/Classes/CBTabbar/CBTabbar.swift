@@ -31,11 +31,11 @@ public enum ItemSizeType{
 
 
 public struct CBTabbarConfiguration {
-    var lineType:CBTabbarLineType = .nomal
-    var lineColor:UIColor = UIColor.red
-    var font:UIFont = UIFont.systemFont(ofSize: 14)
-    var badgeColor:UIColor = UIColor.red
-    var badgeFont:UIFont = UIFont.boldSystemFont(ofSize: 14)
+    public var lineType:CBTabbarLineType = .nomal
+    public var lineColor:UIColor = UIColor.red
+    public var font:UIFont = UIFont.systemFont(ofSize: 14)
+    public var badgeColor:UIColor = UIColor.red
+    public var badgeFont:UIFont = UIFont.boldSystemFont(ofSize: 14)
 }
 
 public enum CBTabbarStatus{
@@ -45,8 +45,8 @@ public enum CBTabbarStatus{
 
 
 public class BadgeValueItem {
-    var value = 0
-    var index = 0
+    public var value = 0
+    public var index = 0
 }
 
 
