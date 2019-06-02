@@ -15,10 +15,10 @@ fileprivate var CBTabbarKey = "CBTABBARKEY"
 
 
 public class CBTabbarController: UIViewController,UIScrollViewDelegate {
-
+    
     public var tabbar:CBTabbar!
     
-   
+    
     
     public  init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
         super.init(nibName: nil, bundle: nil)
@@ -52,8 +52,8 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     fileprivate(set) var matchViewController:[[Int:UIViewController]] = []
     
-    lazy public var scrollView:UIScrollView = {
-       let v = UIScrollView()
+    public lazy var scrollView:UIScrollView = {
+        let v = UIScrollView()
         v.delegate = self
         v.isPagingEnabled = true
         return v
@@ -81,7 +81,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
             
             if k == selectedViewController{
                 if !self.children.contains(v){
-                  
+                    
                     self.addChild(v)
                     v.view.frame = CGRect.init(x: CGFloat(k)*self.view.frame.width, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - 90)
                     self.scrollView.addSubview(v.view)
@@ -94,7 +94,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         
     }
     
-
+    
     
     func setViewHiddel(current:Int,next:Int){
         self.matchViewController.forEach { (dic) in
@@ -108,7 +108,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         }
     }
     
-
+    
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -142,17 +142,17 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         setContentOffset(animated: false)
         tabbar.setSelectedItem(idx: selectedViewController, animated: false)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 public extension UIViewController{
