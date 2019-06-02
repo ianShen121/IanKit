@@ -14,13 +14,13 @@ fileprivate var CBTabbarKey = "CBTABBARKEY"
 
 
 
-class CBTabbarController: UIViewController,UIScrollViewDelegate {
+public class CBTabbarController: UIViewController,UIScrollViewDelegate {
 
-    var tabbar:CBTabbar!
+    public var tabbar:CBTabbar!
     
    
     
-    init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
+    public init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
         super.init(nibName: nil, bundle: nil)
         self.tabbarHeight = barHeight
         self.viewcontrollers = vcs
