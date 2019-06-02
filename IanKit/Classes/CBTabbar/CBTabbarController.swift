@@ -120,7 +120,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     }
     
     
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         
