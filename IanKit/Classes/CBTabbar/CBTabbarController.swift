@@ -20,13 +20,18 @@ class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
    
     
-    init(vcs:[UIViewController],selectedViewController:Int=0) {
+    init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70) {
         super.init(nibName: nil, bundle: nil)
+        self.tabbarHeight = barHeight
         self.viewcontrollers = vcs
         self.selectedViewController = selectedViewController
         
         setTabbar()
     }
+    
+    var tabbarHeight:CGFloat = 70
+    
+    
     
     private func setTabbar(){
         tabbar = CBTabbar.init()
@@ -122,8 +127,8 @@ class CBTabbarController: UIViewController,UIScrollViewDelegate {
     }
     
     func setUI(){
-        tabbar.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width, height: 90)
-        scrollView.frame = CGRect.init(x: 0, y: 90, width: self.view.bounds.width, height:self.view.bounds.height-90)
+        tabbar.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width, height: tabbarHeight)
+        scrollView.frame = CGRect.init(x: 0, y: 90, width: self.view.bounds.width, height:self.view.bounds.height-tabbarHeight)
         self.view.addSubview(tabbar)
         self.view.addSubview(scrollView)
         
