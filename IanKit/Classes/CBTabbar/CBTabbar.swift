@@ -51,6 +51,10 @@ public struct CBTabbarConfiguration {
     public var badgeSizeType:BadgeSizeType = .auto
     public var imageSizeType:ImageSizeType = .auto
     public var minItemWidth:CGFloat = 60
+    
+    public init(){
+        
+    }
 }
 
 public enum CBTabbarStatus{
