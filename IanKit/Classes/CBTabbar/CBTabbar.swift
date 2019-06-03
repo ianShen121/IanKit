@@ -16,6 +16,18 @@ public enum CBTabbarLineType {
 }
 
 
+public enum ImageSizeType{
+    case auto
+    case custom(_ size:CGSize)
+}
+
+
+public enum BadgeSizeType{
+    case auto
+    case custom(_ frame:CGRect)
+    case sizeCustom(_ size:CGSize)
+}
+
 
 public enum CBTabItmType{
     case text(_ t:String)
@@ -36,6 +48,9 @@ public struct CBTabbarConfiguration {
     public var font:UIFont = UIFont.systemFont(ofSize: 14)
     public var badgeColor:UIColor = UIColor.red
     public var badgeFont:UIFont = UIFont.boldSystemFont(ofSize: 14)
+    public var badgeSizeType:BadgeSizeType = .auto
+    public var imageSizeType:ImageSizeType = .auto
+    public var minItemWidth:CGFloat = 60
 }
 
 public enum CBTabbarStatus{
@@ -55,6 +70,7 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
 
     
     public var selectedItemHanddler:((Int)->Void)?
+    
     
     
     lazy var line:UIView = {
@@ -78,11 +94,11 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     public var configuration:CBTabbarConfiguration = CBTabbarConfiguration()
     
-    public var minItemWidth:CGFloat = 60
+    
     
     fileprivate var lineHeight:CGFloat{
         get{
-            switch self.lineWidthType {
+            switch self.configuration.lineType {
             case .hidden:
                 return 0
             default:
@@ -95,9 +111,7 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     private(set) var selectedItem:Int = 0{
         didSet{
-            
-       
-            
+
           menu.reloadData()
         }
     }
@@ -112,17 +126,31 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     
     public var itemSizeType:ItemSizeType = .auto
     
-    public var lineWidthType:CBTabbarLineType = .nomal
+    
     
     var textColors:[CBTabbarStatus:UIColor] = [.normal:UIColor.black,.selected:UIColor.red]
     
     var backGroundColors:[CBTabbarStatus:UIColor] = [.normal:UIColor.white,.selected:UIColor.white]
     
    
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    public convenience init(config:CBTabbarConfiguration){
+        self.init()
+        self.configuration = config
         setUI()
     }
+    
+    public convenience init(config:()->CBTabbarConfiguration){
+        self.init()
+        self.configuration = config()
+        line.backgroundColor = self.configuration.lineColor
+        
+        setUI()
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
@@ -132,19 +160,15 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
     private func setUI(){
         self.addSubview(menu)
         self.menu.addSubview(line)
-        
-        
-        
     }
     
-    func setItemTextColor(color:UIColor,for status:CBTabbarStatus){
+    public func setItemTextColor(color:UIColor,for status:CBTabbarStatus){
         textColors.updateValue(color, forKey: status)
         
     }
     
-    func setItemBackgroudColor(color:UIColor,for status:CBTabbarStatus){
+    public func setItemBackgroudColor(color:UIColor,for status:CBTabbarStatus){
         backGroundColors.updateValue(color, forKey: status)
-        
     }
     
     
@@ -191,10 +215,10 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
         cell.selectdHandder = { [weak self] (rect) in
             self?.layoutLine(rect)
         }
-        
-        
         cell.badgeItem = badgeValues[indexPath.row]
         cell.item = item
+        cell.imageSizeType = self.configuration.imageSizeType
+        cell.badgeSizeType = configuration.badgeSizeType
         cell.textColors = textColors
         cell.badgeColor = configuration.badgeColor
         cell.backGroundColors = backGroundColors
@@ -211,10 +235,10 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
  
         let sw = UIScreen.main.bounds.width
         if rect.midX > sw/2 && contentSize.width-rect.midX > sw/2 {
-            menu.setContentOffset(CGPoint.init(x: -(sw/2 - rect.midX), y: 0), animated: true)
+            menu.setContentOffset(CGPoint.init(x: -(sw/2 - rect.midX), y: 0), animated: isLineAnimated)
         }
         var lineWidth = rect.width
-        switch self.lineWidthType {
+        switch self.configuration.lineType {
         case .custom(let w):
             lineWidth = lineWidth < w ? lineWidth : w
         default:
@@ -248,7 +272,7 @@ public class CBTabbar: UIView,UICollectionViewDelegate,UICollectionViewDataSourc
         switch self.itemSizeType {
         case .auto:
             let autoWidth = self.bounds.width/CGFloat(self.items.count)
-            let width = autoWidth > minItemWidth ? autoWidth : minItemWidth
+            let width = autoWidth > configuration.minItemWidth ? autoWidth : configuration.minItemWidth
             return CGSize.init(width: width, height: height)
         case .custom(let h):
             return CGSize.init(width: h, height: height)

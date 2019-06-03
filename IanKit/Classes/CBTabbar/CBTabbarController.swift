@@ -25,8 +25,6 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         self.tabbarHeight = barHeight
         self.viewcontrollers = vcs
         self.selectedViewController = selectedViewController
-        
-        setTabbar()
     }
     
     var tabbarHeight:CGFloat = 70
@@ -34,7 +32,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     
     private func setTabbar(){
-        tabbar = CBTabbar.init()
+        tabbar = CBTabbar.init(config: self.tabbarConfiguration)
         tabbar.items = viewcontrollers.map({$0.cbTabType})
         tabbar.selectedItemHanddler = { [weak self] (idx) in
             self?.setViewHiddel(current: self!.selectedViewController, next: idx)
@@ -61,6 +59,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     var selectedViewController = 0
     
+    public var tabbarConfiguration:CBTabbarConfiguration = CBTabbarConfiguration()
     
     func setContentOffset(animated:Bool){
         guard selectedViewController < self.matchViewController.count else {
@@ -122,6 +121,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        setTabbar()
         setUI()
         
     }

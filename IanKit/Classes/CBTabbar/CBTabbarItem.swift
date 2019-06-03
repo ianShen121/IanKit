@@ -26,12 +26,22 @@ public class CBTabbarItem: UICollectionViewCell {
             }
             
             
-            self.layoutIfNeeded()
+            
         }
     }
     
+    var badgeSizeType:BadgeSizeType = .auto{
+        didSet{
+            
+            self.setNeedsLayout()
+        }
+    }
     
-    
+    var imageSizeType:ImageSizeType = .auto{
+        didSet{
+            self.setNeedsLayout()
+        }
+    }
     
     public var selectdHandder:((CGRect)->Void)?
     lazy var labText:UILabel = {
@@ -117,21 +127,53 @@ public class CBTabbarItem: UICollectionViewCell {
         super.layoutSubviews()
         
 
+   
+        
         switch self.item {
         case .image(_):
-           icon.frame = self.bounds
+            
+            switch self.imageSizeType{
+            case .auto:
+                icon.frame = self.bounds
+            case .custom(let size):
+                icon.frame = CGRect.init(x: self.bounds.width/2-size.width/2, y: self.bounds.height/2-size.height/2, width: size.width, height: size.height)
+            }
+            
+           
         case .text(_):
            labText.frame = self.bounds
         default:
             let textHeight = self.bounds.height/3
             let imgeHeight = self.bounds.height-textHeight - 5
             labText.frame = CGRect.init(x: 0, y: self.bounds.height-textHeight-5, width: self.bounds.width, height: textHeight)
-            icon.frame = CGRect.init(x: self.bounds.width/2-imgeHeight/2, y: 0, width: imgeHeight, height: imgeHeight)
+            
+            switch imageSizeType{
+            case .auto:
+                icon.frame = CGRect.init(x: self.bounds.width/2-imgeHeight/2, y: 0, width: imgeHeight, height: imgeHeight)
+            case .custom(let size):
+                let w = self.bounds.width < size.width ? self.bounds.width : size.width
+                let h = imgeHeight < size.height ? imgeHeight : size.height
+                icon.frame = CGRect.init(x: self.bounds.width/2-w/2, y: imgeHeight/2-h/2, width: w, height: h)
+                
+            }
+            
         }
-        let size = self.bounds.width/3
-        self.labBadge.frame = CGRect.init(x: self.bounds.width-size, y: 2, width: size, height: size)
+      
+        switch self.badgeSizeType {
+        case .custom(let rect):
+            self.labBadge.frame = rect
+            self.labBadge.layer.cornerRadius = rect.height/2
+        case .sizeCustom(let size):
+            self.labBadge.frame = CGRect.init(x: self.bounds.width-size.width-5, y: 5, width: size.width, height: size.height)
+            self.labBadge.layer.cornerRadius = size.height/2
+        default:
+            let size = self.bounds.width/3
+            self.labBadge.frame = CGRect.init(x: self.bounds.width-size - 5, y: 5, width: size, height: size)
+            self.labBadge.layer.cornerRadius = size/2
+            
+        }
+      
         
-        self.labBadge.layer.cornerRadius = size/2
         
         
     }
