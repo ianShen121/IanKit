@@ -13,6 +13,7 @@
 		57C8B6F85B4F0679E58B7CF3C5E2E4E3 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359FFB9A6F587D8DFD7B8426FB5D7D9F /* Presenter.swift */; };
 		589AC1138D2CA6F2D3EC820BFF0C7CA3 /* TextMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF4D002E3FB365778A72DDD74280218 /* TextMatcher.swift */; };
 		5D2D6E14EA219A21AE0DB57362318CFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		77AF6F5B22A679F40009F539 /* CBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AF6F5A22A679F40009F539 /* CBTextView.swift */; };
 		848D80508A719CCF1E8BB141F8CC9F89 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF083A59AD98536A0C06E636776CC2E /* AttributedType.swift */; };
 		925F1BC2C2687FAE59B9A377B7791DFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		A24ADC135387D852F30FCBCC744F9742 /* CBTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D3873A5158DCD9822D8E4D87BCE13 /* CBTabbar.swift */; };
@@ -58,6 +59,7 @@
 		6CF083A59AD98536A0C06E636776CC2E /* AttributedType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AttributedType.swift; sourceTree = "<group>"; };
 		73A47E2CA0EACD5946D772F426437D2B /* Pods-ianKit_example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ianKit_example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		76460598C18BBF5D8A4CB951BD0399C2 /* Pods_ianKit_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ianKit_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77AF6F5A22A679F40009F539 /* CBTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBTextView.swift; sourceTree = "<group>"; };
 		85A74E76D7CCB244123E5E572304E2C1 /* ISConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ISConfiguration.swift; sourceTree = "<group>"; };
 		939390CC556239C407C220EAAA9C6A96 /* IanKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IanKit-Info.plist"; sourceTree = "<group>"; };
 		9393AF7730A013569D801680D141420D /* IanKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IanKit-prefix.pch"; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 			path = "Target Support Files/Pods-ianKit_example";
 			sourceTree = "<group>";
 		};
+		77AF6F5922A679CF0009F539 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				77AF6F5A22A679F40009F539 /* CBTextView.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 		B6A69CFE89FFF2F70ADFE68790B4B746 /* IanKit */ = {
 			isa = PBXGroup;
 			children = (
+				77AF6F5922A679CF0009F539 /* Input */,
 				A7514BB08CC0E9300FBCC95CC5E72CD1 /* CBTabbar */,
 				4FDB1258E03BE1A8BFF6B0858204C9BC /* Pod */,
 				E8DBCBE65A9AEA2AB27EBB8364A186D0 /* Presenter */,
@@ -358,6 +369,7 @@
 				AE06ECE2DD741463563EC08992E43911 /* IanKit-dummy.m in Sources */,
 				E439FE94522B4ED2CCA6081031EDC912 /* ISConfiguration.swift in Sources */,
 				5708A8FA5B5E740763CB7724DF9E6CB0 /* ISPresentationController.swift in Sources */,
+				77AF6F5B22A679F40009F539 /* CBTextView.swift in Sources */,
 				C3816186EB3ED3F887904FE41E657322 /* Number.swift in Sources */,
 				57C8B6F85B4F0679E58B7CF3C5E2E4E3 /* Presenter.swift in Sources */,
 				3FE6103AC58ECC0E1252F11ADD99E009 /* String+extension.swift in Sources */,
