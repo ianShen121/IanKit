@@ -25,6 +25,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         self.tabbarHeight = barHeight
         self.viewcontrollers = vcs
         self.selectedViewController = selectedViewController
+        setTabbar()
     }
     
     var tabbarHeight:CGFloat = 70
@@ -121,7 +122,7 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        setTabbar()
+        
         setUI()
         
     }
