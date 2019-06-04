@@ -1,0 +1,6 @@
+framework module Pods_ianKit_example {
+  umbrella header "Pods-ianKit_example-umbrella.h"
+
+  export *
+  module * { export * }
+}

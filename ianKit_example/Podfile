@@ -1,0 +1,6 @@
+use_frameworks!
+target 'ianKit_example' do
+  pod 'IanKit', :path => '../'
+  
+  
+end

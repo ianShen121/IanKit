@@ -1,6 +1,0 @@
-use_frameworks!
-target 'IanKit_Tests' do
-  pod 'IanKit', :path => '../'
-  
-  
-end

@@ -28,6 +28,16 @@ public class CBTabbarController: UIViewController,UIScrollViewDelegate {
         setTabbar()
     }
     
+    
+    public  init(vcs:[UIViewController],selectedViewController:Int=0,barHeight:CGFloat = 70,config:CBTabbarConfiguration) {
+        super.init(nibName: nil, bundle: nil)
+        self.tabbarHeight = barHeight
+        self.tabbarConfiguration = config
+        self.viewcontrollers = vcs
+        self.selectedViewController = selectedViewController
+        setTabbar()
+    }
+    
     var tabbarHeight:CGFloat = 70
     
     
